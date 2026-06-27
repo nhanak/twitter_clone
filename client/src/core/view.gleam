@@ -16,14 +16,22 @@ pub fn view(model: Model) -> Element(Message) {
 }
 
 fn post_input(on_user_changed_post_input, model: Model) -> Element(message) {
-  html.div([attribute.class("text-white")], [
-    html.input([
-      attribute.value(model.post_input),
-      event.on_input(on_user_changed_post_input),
-      attribute.class("border border-solid border-white"),
-    ]),
+  html.div([attribute.class("flex flex-col text-white mt-20")], [
+    html.textarea(
+      [
+        event.on_input(on_user_changed_post_input),
+        attribute.class(
+          "border border-solid border-white h-24 w-xl resize-none",
+        ),
+      ],
+      model.post_input,
+    ),
     html.button(
-      [attribute.class("border border-solid border-white rounded-lg px-2")],
+      [
+        attribute.class(
+          "mt-2 border border-solid border-white rounded-lg px-2 hover:bg-white hover:text-black",
+        ),
+      ],
       [
         html.text("Post"),
       ],
